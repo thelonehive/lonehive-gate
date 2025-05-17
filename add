@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lone Hive Access Gate</title>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body style="text-align:center; margin-top:100px; font-family: Arial, sans-serif;">
+  <h2>Welcome to The Lone Hive</h2>
+  <p>Please verify you are not a bot to continue.</p>
+
+  <!-- Cloudflare Turnstile widget -->
+  <div class="cf-turnstile" data-sitekey="YOUR_SITE_KEY_HERE" data-callback="turnstileSuccess"></div>
+
+  <script>
+    function turnstileSuccess(token) {
+      // If Turnstile verification works, redirect to your Linktree
+      window.location.href = "https://linktr.ee/thelonehive";
+    }
+  </script>
+</body>
+</html>
+[Add gate page]
