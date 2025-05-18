@@ -1,1 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Enter the Hive</title>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body style="font-family: sans-serif; text-align: center; margin-top: 100px;">
+  <h1>🐝 Welcome to The Lone Hive</h1>
+  <p>Please complete the check below to access our linktree.</p>
 
+  <form id="gate-form">
+    <div class="cf-turnstile" data-sitekey="0x4AAAAAABdwkI7rVxZYZmCX"></div>
+    <br>
+    <button type="submit">Enter</button>
+  </form>
+
+  <script>
+    document.getElementById('gate-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // You can add validation here if needed.
+      window.location.href = "https://linktr.ee/thelonehive"; // Replace with your real linktree URL!
+    });
+  </script>
+</body>
+</html>
