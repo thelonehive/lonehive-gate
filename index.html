@@ -1,25 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Enter the Hive</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Lone Hive Gate</title>
+  
+  <style>
+    body {
+      background: url('BeyonceBackground.png') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Arial', sans-serif;
+      color: #f3e5ab; /* soft gold */
+      text-align: center;
+      padding: 40px 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    img.logo {
+      max-width: 200px;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      color: #ffde59; /* bright honey yellow */
+      text-shadow: 1px 1px 3px #00000099;
+    }
+    p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 3px #00000099;
+      max-width: 400px;
+    }
+    .turnstile-container {
+      margin-top: 20px;
+    }
+    #access-link {
+      display: none;
+      margin-top: 30px;
+      font-size: 1.3em;
+      background-color: #ffde59;
+      color: black;
+      padding: 15px 25px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 8px #b38f00cc;
+    }
+    #access-link:hover {
+      background-color: #e6c84f;
+      box-shadow: 0 6px 12px #a08000cc;
+    }
+  </style>
+  
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
-<body style="font-family: sans-serif; text-align: center; margin-top: 100px;">
-  <h1>🐝 Welcome to The Lone Hive</h1>
-  <p>Please complete the check below to access our linktree.</p>
+<body>
 
-  <form id="gate-form">
-    <div class="cf-turnstile" data-sitekey="0x4AAAAAABdwkI7rVxZYZmCX"></div>
-    <br>
-    <button type="submit">Enter</button>
-  </form>
+  <!-- Your Lone Hive Logo -->
+  <img src="WhiteLogo.png" alt="The Lone Hive Logo" class="logo" />
+
+  <h1>Welcome to The Lone Hive! 🐝</h1>
+  <p>Please prove you're human by clicking the checkbox below, then click the button to enter our community's site</p>
+
+  <div class="turnstile-container">
+    <div
+      class="cf-turnstile"
+      data-sitekey="0x4AAAAAABdwkI7rVxZYZmCX"
+      data-callback="turnstileSuccess"
+    ></div>
+  </div>
+
+  <a id="access-link" href="https://linktr.ee/thelonehive" target="_blank" rel="noopener noreferrer">Enter The Lone Hive</a>
 
   <script>
-    document.getElementById('gate-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      // You can add validation here if needed.
-      window.location.href = "https://linktr.ee/thelonehive"; // Replace with your real linktree URL!
-    });
+    function turnstileSuccess(token) {
+      // Show the access link button once Turnstile passes
+      document.getElementById('access-link').style.display = 'inline-block';
+    }
   </script>
+
 </body>
 </html>
